@@ -51,3 +51,21 @@ render (data)
 /// Домашнее задание
 // 1) Реализовать новую форму, которая будет включать инпут, по которому необходимо реализовать удаление товара
 // В инпут необходимо передать значение ID товара и после нажатия товар должен быть удален на стороне разметки.
+
+let remove_form = document.querySelector(".remove_form")
+
+let input = remove_form.querySelector("input")
+
+remove_form.onsubmit = (event)=>{
+    event.preventDefault()
+    let form_data = new FormData(event.target)
+    let inp_data = Object.fromEntries(form_data)
+    removeProduct(inp_data)
+}
+let remove_btn = remove_form.querySelector("button")
+
+function removeProduct(info){
+
+    data = data.filter(elem => elem.id != info.id)
+    render(data)
+}
