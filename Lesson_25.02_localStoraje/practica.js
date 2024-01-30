@@ -1,12 +1,14 @@
 //Practica
 
-let data = [
+let default_data =  [
     {id: 1, title: 'Велосипед', price: 15000},
     {id: 2, title: 'Самокат', price: 2000},
     {id: 3, title: 'Ноутбук', price: 30000},
     {id: 4, title: 'Стол', price: 10000},
     {id: 5, title: 'Телевизор', price: 23000},
 ]
+
+let data = JSON.parse(localStorage.getItem("product")) ?? default_data;
 
 let div_products = document.querySelector(".product_wrapper")
 
@@ -30,8 +32,8 @@ function addNewProduct(info){
 
 
 function render(array){
-
     div_products.innerHTML = ""
+    toLocalStorage(data)
 for (let elem of array) {
     let div_card = document.createElement("div")
     let h_title = document.createElement("h2")
@@ -67,5 +69,16 @@ let remove_btn = remove_form.querySelector("button")
 function removeProduct(info){
 
     data = data.filter(elem => elem.id != info.id)
+    
     render(data)
 }
+
+
+//Сохранение данных в наш массив
+
+function toLocalStorage (obj){
+    localStorage.setItem("product",JSON.stringify(obj))
+}
+
+//реализовать чтение данных из LocalStorage в момент обновления страницы
+
