@@ -27,6 +27,11 @@ function addNewProduct(info){
     render(data)
 }
 
+//Сохранение данных в наш массив
+
+function toLocalStorage (obj){
+    localStorage.setItem("product",JSON.stringify(obj))
+}
 //удалить продукт
 
 
@@ -74,11 +79,7 @@ function removeProduct(info){
 }
 
 
-//Сохранение данных в наш массив
 
-function toLocalStorage (obj){
-    localStorage.setItem("product",JSON.stringify(obj))
-}
 
 //реализовать чтение данных из LocalStorage в момент обновления страницы
 
