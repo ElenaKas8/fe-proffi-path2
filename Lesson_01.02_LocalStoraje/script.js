@@ -80,15 +80,27 @@
 // fetch-инструмент формирования HTTP запросов-возвращает промис
 
 
-let url = "https://jsonplaceholder.typicode.com/users";
+// let url = "https://jsonplaceholder.typicode.com/users";
 
+// fetch(url)
+// .then((res)=>res.json())
+// .then((data)=>{
+//     let names = data.map(elem => elem.name)
+//     console.log(names)
+// }
+// )
+
+// Задание 1
+// Реализуйте сетевой запрос по адресу 
+// https://jsonplaceholder.typicode.com/todos
+// Получиче список выполненных задач в консоль.
+
+
+let url = "https://jsonplaceholder.typicode.com/todos"
 fetch(url)
 .then((res)=>res.json())
 .then((data)=>{
-    let names = data.map(elem => elem.name)
-    console.log(names)
-}
-)
-
-
+    let completed = data.filter(elem => elem.completed)
+    console.log(completed)
+})
     
