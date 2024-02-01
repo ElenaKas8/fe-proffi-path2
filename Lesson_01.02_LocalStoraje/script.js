@@ -80,11 +80,14 @@
 // fetch-инструмент формирования HTTP запросов-возвращает промис
 
 
-let url = "https://jsonplaceholder.typicode.com/posts";
+let url = "https://jsonplaceholder.typicode.com/users";
 
 fetch(url)
 .then((res)=>res.json())
-.then((json)=>console.log(json)
+.then((data)=>{
+    let names = data.map(elem => elem.name)
+    console.log(names)
+}
 )
 
 
