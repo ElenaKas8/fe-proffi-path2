@@ -58,16 +58,16 @@
 
 // Задание 3
 // Напишите функцию getUsers(), которая будет осуществлять запрос по адресу
-// http://212.8.247.94:3050/users
+ http://212.8.247.94:3050/users
 // Полученный ответ выведите в косноль
 
-// function getUsers() { 
-//     let url = "http://212.8.247.94:3050/users"
-//     fetch(url)
-//     .then((res)=>res.json())
-//     .then((data)=>console.log(data))
-// }
-// getUsers()
+ function getUsers() { 
+    let url = "http://212.8.247.94:3050/users"
+    fetch(url)
+    .then((res)=>res.json())
+    .then((data)=>console.log(data))
+}
+getUsers()
 
 
 // Задание 4
@@ -98,23 +98,14 @@
 
 // createNewUser()
 
-function createNewUser(obj) {
-    let url = "http://212.8.247.94:3050/user/create"
-    fetch(url, {
-        method: "POST",
-        headers: {
-            "Content-type": "application/json; charset=UTF-8",       
-       },
-       body: JSON.stringify(obj)
-    })
-    .then((res)=>res.json())
-   .then((data)=>console.log(data))
-}
-let user ={
-    name: 'Elena',
-    age: 40,
-    salary: 5000,
-    job_id: 'Student'
-}
+// 
 
-createNewUser(user)
+// DELETE запрос
+
+let url = "http://212.8.247.94:3050/users";
+fetch(url+'/850', {
+    method: "DELETE",
+    
+})
+.then((res)=>res.json())
+.then((data)=>console.log(data))
