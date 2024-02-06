@@ -58,16 +58,16 @@
 
 // Задание 3
 // Напишите функцию getUsers(), которая будет осуществлять запрос по адресу
- http://212.8.247.94:3050/users
+ //http://212.8.247.94:3050/users
 // Полученный ответ выведите в косноль
 
- function getUsers() { 
-    let url = "http://212.8.247.94:3050/users"
-    fetch(url)
-    .then((res)=>res.json())
-    .then((data)=>console.log(data))
-}
-getUsers()
+//  function getUsers() { 
+//     let url = "http://212.8.247.94:3050/users"
+//     fetch(url)
+//     .then((res)=>res.json())
+//     .then((data)=>console.log(data))
+// }
+// getUsers()
 
 
 // Задание 4
@@ -78,7 +78,7 @@ getUsers()
 //  function createNewUser(obj) {
 //      let url = "http://158.160.60.49:3050/users/create"
 // let data = {
-//     id: 841,
+   
 //     name: 'Elena',
 //     age: 40,
 //     salary: 5000,
@@ -98,14 +98,83 @@ getUsers()
 
 // createNewUser()
 
-// 
+
 
 // DELETE запрос
 
-let url = "http://212.8.247.94:3050/users";
-fetch(url+'/850', {
-    method: "DELETE",
+// let url = "http://212.8.247.94:3050/users";
+// fetch(url+'/850', {
+//     method: "DELETE",
     
-})
-.then((res)=>res.json())
-.then((data)=>console.log(data))
+// })
+// .then((res)=>res.json())
+// .then((data)=>console.log(data))
+
+
+// function deleteUserById(id) {
+//     let url = "http://212.8.247.94:3050/users";
+//     fetch(url+'/'+id, {
+//         method: "DELETE",
+        
+//     })
+//     .then((res)=>res.json())
+//     .then((data)=>console.log(data))
+// }
+
+//--------------
+// for (let i = 850; i <= 870; i++) {
+//     setTimeout(()=>deleteUserById(i), 2000)
+//     deleteUserById(i)
+// }
+
+
+
+//-------PATCH запрос-изменение записей
+
+
+// let newUser = {
+//     name: 'Elena',
+//     age: 30,
+//     salary: 7000,
+//     job_id: 'Student'
+// }
+// let url = "http://212.8.247.94:3050/users/850";
+// fetch(url, {
+//     method: "PATCH",
+//     headers: {
+//         "Content-type": "application/json; charset=UTF-8",
+// },
+// body: JSON.stringify(newUser)
+    
+// })
+// .then((res)=>res.json())
+// .then((data)=>console.log(data))
+
+
+// Задача 6
+
+// Реализуйте функцию updateUser(obj, id) котоая будет осуществлять PATACH запрос
+// с указанными данными в виде объекта, а также id.
+
+
+// let obj = {   
+//     age: 30,
+//     salary: 17000,
+//     job_id: 'Developer'
+// }
+
+// function updateUser(obj, id) {
+//     let url = `http://212.8.247.94:3050/users/${id}`;
+//     fetch(url, {
+//         method: "PATCH",
+//         headers: {
+//             "Content-type": "application/json; charset=UTF-8",
+//     },
+//     body: JSON.stringify(obj)
+        
+//     })
+//     .then((res)=>res.json())
+//     .then((data)=>console.log(data))
+// }
+
+// updateUser(obj, 855)
