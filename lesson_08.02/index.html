@@ -1,25 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>User-Form-App</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="forms">
-        <form class="add_form">
-            <h2>Add new user</h2>
-            <input name="name" placeholder="name"/>
-            <input name="age" placeholder="age"/>
-            <input name="job_id" placeholder="job_id"/>
-            <input name="salary" placeholder="salary"/>
-            <input type="submit"/>
-        </form>
-    </div>
-    <div class="users_wrapper">
+      <form class="add_form">
+        <h2>Add new user</h2>
+        <input name="name" placeholder="name" />
+        <input name="age" placeholder="age" />
+        <input name="job_id" placeholder="job_id" />
+        <input name="salary" placeholder="salary" />
+        <input type="submit" />
+      </form>
 
+      <form class="delete_form">
+        <h2>Remove user</h2>
+        <input name="job_id" />
+        <button type="submit" name="remove">Remove</button>
+      </form>
+
+      <form class="update_form">
+        <h2>Update user</h2>
+
+        <input name="name" placeholder="name" />
+        <input name="age" placeholder="age" />
+        <input name="job_id" placeholder="job_id" />
+        <input name="salary" placeholder="salary" />
+        <input name="id" />
+
+        <button type="submit" name="update">Update</button>
+      </form>
     </div>
+    <div class="users_wrapper"></div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

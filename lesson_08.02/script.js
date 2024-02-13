@@ -9,8 +9,9 @@
 
 let users_wrapper = document.querySelector('.users_wrapper')
 let add_form = document.querySelector('.add_form')
-
-
+let delete_form = document.querySelector('.delete_form')
+let update_form = document.querySelector('.update_form')
+let update_btn = document.querySelector('.update_btn')
 // add_form.onsubmit = (e) => {
 //     e.preventDefault()
 //     let form_data = new FormData(add_form)
@@ -82,6 +83,47 @@ getUsers()
 
 
 
+    
+    function deleteUser(id){
+        let url = 'http://212.8.247.94:3050/user/delete/';
+        fetch(url + '/' + id , {
+            method: 'DELETE',
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            getUsers()
+        })
+    }
+    deleteUser(993)
+       
+
+// Обработчик формы удаления
+delete_form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    update_btn.disabled = true
+    
+    let form_data = new FormData(delete_form)
+    let user_id = form_data.get('id')
+    deleteUser(user_id)
+    console.log(user_id, delete_form__id)
+})
+getUsers()
+
+ // Обработчик формы обновления
+ update_form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    let form_data = new FormData(update_form)
+    let user_id = form_data.get('id')
+    let new_job = form_data.get('job_id')
+    let new_salary = form_data.get('salary')
+    updateUser(user_id, { job_id: new_job, salary: new_salary })
+    console.log(user_id, new_job, new_salary)
+
+})
+getUsers()
+
+
 
 //-------------------
 // let delete_form = document.querySelector('.delete_form');
@@ -122,21 +164,3 @@ getUsers()
 
 
 
-function updateUser(obj) {
-    let userId = obj.id;
-    delete obj.id; // Удаляем поле ID из объекта, так как оно не должно быть в теле запроса
-    let url = `http://212.8.247.94:3050/user/update/${userId}`;
-    fetch(url, {
-        method: 'PUT',
-        headers: {
-            "Content-type": "application/json"
-        },
-        body: JSON.stringify(obj)
-    })
-    .then(res => res.json())
-    .then(data => {
-        console.log(data);
-        getUsers();
-    })
-    .catch(e => console.log(e));
-}
