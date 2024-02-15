@@ -9,15 +9,10 @@
 
 let users_wrapper = document.querySelector('.users_wrapper')
 let add_form = document.querySelector('.add_form')
-let delete_form = document.querySelector('.delete_form')
+let remove_form = document.querySelector('.remove_form')
 let update_form = document.querySelector('.update_form')
-let update_btn = document.querySelector('.update_btn')
-// add_form.onsubmit = (e) => {
-//     e.preventDefault()
-//     let form_data = new FormData(add_form)
-//     let data = Object.fromEntries(form_data)
-//     console.log(data)
-// }
+
+
 
 // Обработчик формы
 add_form.addEventListener('submit', (e) => {
@@ -28,6 +23,60 @@ add_form.addEventListener('submit', (e) => {
     console.log(data)
 })
 
+remove_form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    let form_data = new FormData(remove_form)
+    let id = form_data.get('id')  
+    deleteUser(id)
+
+    //очистка формы
+    remove_form.reset()
+})
+
+update_form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    let form_data = new FormData(update_form)
+    let {id, ...user_data}  = Object.fromEntries(form_data)
+  
+    updateUser(id, user_data)
+   
+})
+
+
+
+function deleteUser(id){
+    let url = `http://212.8.247.94:3050/users/${id}`
+    fetch(url, {
+        method: 'DELETE',
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            getUsers()
+        })
+       
+}
+
+
+
+function updateUser(id,data){
+
+let url = `http://212.8.247.94:3050/users/${id}`
+fetch(url, {
+    method: 'PATCH',
+    headers: {
+        "Content-type": "application/json; charset=UTF-8",
+    },
+    body: JSON.stringify(data)
+
+})
+
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+        getUsers()
+    })
+}
 
 // Сетевые запросы 
 function getUsers(){
@@ -79,88 +128,7 @@ getUsers()
 
 //DZ-реализоапть еще 2 формі-Delete,Update
 
-
-
-
-
-    
-    function deleteUser(id){
-        let url = 'http://212.8.247.94:3050/user/delete/';
-        fetch(url + '/' + id , {
-            method: 'DELETE',
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            getUsers()
-        })
-    }
-    deleteUser(993)
-       
-
-// Обработчик формы удаления
-delete_form.addEventListener('submit', (e) => {
-    e.preventDefault()
-    update_btn.disabled = true
-    
-    let form_data = new FormData(delete_form)
-    let user_id = form_data.get('id')
-    deleteUser(user_id)
-    console.log(user_id, delete_form__id)
-})
-getUsers()
-
- // Обработчик формы обновления
- update_form.addEventListener('submit', (e) => {
-    e.preventDefault()
-    let form_data = new FormData(update_form)
-    let user_id = form_data.get('id')
-    let new_job = form_data.get('job_id')
-    let new_salary = form_data.get('salary')
-    updateUser(user_id, { job_id: new_job, salary: new_salary })
-    console.log(user_id, new_job, new_salary)
-
-})
-getUsers()
-
-
-
-//-------------------
-// let delete_form = document.querySelector('.delete_form');
-
-// delete_form.addEventListener('submit', function(e) {
-//     e.preventDefault();
-//     let userId = document.querySelector('input[name="user_id"]').value;
-//     console.log(userId);
-    
-//     deleteUser(userId);
-// });
-
-// let update_form = document.querySelector('.update_form');
-
-// update_form.addEventListener('submit', function(e) {
-//     e.preventDefault();
-//     let formData = new FormData(this);
-//     let obj = {};
-//     formData.forEach((value, key) => {
-//         obj[key] = value;
-//     });
-//     updateUser(obj);
-// });
-
-// function deleteUser(userId) {
-//     let url = `http://212.8.247.94:3050/user/delete/${userId}`;
-//     fetch(url, {
-//         method: 'DELETE'
-//     })
-//     .then(res => res.json())
-//     .then(data => {
-//         console.log(data);
-//         getUsers();
-//     })
-//     .catch(e => console.log(e));
-// }
-
-
+//1.Форму удаления записей. В форме необходимо указать ID карточки, которую необходимо удалить используя  сетевой запрос. 
+//После удаления карточки на разметке должны обновится
 
 

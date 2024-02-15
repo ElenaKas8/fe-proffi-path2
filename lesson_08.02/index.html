@@ -10,29 +10,33 @@
     <div class="forms">
       <form class="add_form">
         <h2>Add new user</h2>
-        <input name="name" placeholder="name" />
+        <input name="name" placeholder="name" required/>
         <input name="age" placeholder="age" />
         <input name="job_id" placeholder="job_id" />
         <input name="salary" placeholder="salary" />
         <input type="submit" />
       </form>
 
-      <form class="delete_form">
+      <form class="remove_form">
         <h2>Remove user</h2>
-        <input name="job_id" />
-        <button type="submit" name="remove">Remove</button>
+      
+        <input name="id" placeholder="id" />
+       
+        <input type="submit" />
       </form>
 
-      <form class="update_form">
-        <h2>Update user</h2>
+    </div>
+    
 
+      <form class="update_form">
+        <h2>Update user data</h2>
+      
         <input name="name" placeholder="name" />
         <input name="age" placeholder="age" />
         <input name="job_id" placeholder="job_id" />
         <input name="salary" placeholder="salary" />
-        <input name="id" />
-
-        <button type="submit" name="update">Update</button>
+        <input name="id" placeholder="id"/>
+        <input type="submit"</input>
       </form>
     </div>
     <div class="users_wrapper"></div>
