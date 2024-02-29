@@ -44,13 +44,39 @@
 
 
 
-String.prototype.initCap = function() {
-    return this[0].toUpperCase() + this.slice(1).toLowerCase();
-};
-let str ="fxbnagdnNDgh"
-console.log(str.initCap());
+// String.prototype.initCap = function() {
+//     return this[0].toUpperCase() + this.slice(1).toLowerCase();
+// };
+// let str ="fxbnagdnNDgh"
+// console.log(str.initCap());
 
 
 // 'string' => 'String'
 // 'STRING' => 'String'
 // 'StRiNg' => 'String'
+
+//////------------Constructor
+class Person {
+    constructor(name, age){
+        this.name = name;   
+        this.age = age;
+
+    }
+    
+     
+}
+
+class Stack{
+    constructor (){
+        this.stack = [];
+    }
+
+     push(){
+        return this.stack.push()
+
+    }
+    
+}
+let stack = new Stack()
+
+console.log(stack.stack);
